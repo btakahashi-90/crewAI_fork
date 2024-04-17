@@ -183,8 +183,9 @@ class Crew(BaseModel):
         del task_config["agent"]
         return Task(**task_config, agent=task_agent)
 
-    def kickoff(self, inputs: Optional[Dict[str, Any]] = {}) -> str:
+    def kickoff(self, inputs: Optional[Dict[str, Any]] = None) -> str:
         """Starts the crew to work on its assigned tasks."""
+        inputs = {} if inputs is None else inputs
         self._execution_span = self._telemetry.crew_execution_span(self)
         self._interpolate_inputs(inputs)
 
