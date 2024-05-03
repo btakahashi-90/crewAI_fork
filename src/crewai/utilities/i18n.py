@@ -28,7 +28,7 @@ class I18N(BaseModel):
                 f"Translation file for language '{self.language}' not found."
             )
         except json.JSONDecodeError:
-            raise ValidationError(f"Error decoding JSON from the prompts file.")
+            raise ValidationError("Error decoding JSON from the prompts file.")
 
         if not self._translations:
             self._translations = {}
